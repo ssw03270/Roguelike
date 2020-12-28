@@ -15,11 +15,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        moveSpeed = 5f;
+        moveSpeed = 3f;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         isPlayerAttack = false;
         if (Input.GetAxisRaw("Horizontal") != 0f) 
         {
+            
             transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f, 0f));
             isPlayerMove = true;
             lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
