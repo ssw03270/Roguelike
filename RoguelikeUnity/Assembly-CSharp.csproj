@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Skills\SkillFireBall.cs" />
+    <Compile Include="Assets\Scripts\UI\UIHealthBar.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManaBar.cs" />
     <None Include="Assets\AnimationImporter\readme.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2020.1.4f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
