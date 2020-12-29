@@ -8,7 +8,8 @@ public class SkillFireBall : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Vector2 movePos;
 
-    public int usedMana = 10;
+    public int usedMana;
+    public int skillDamage;
     private float usedDelay = 1f;
     private float moveSpeed;
 

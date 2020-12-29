@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Skills
+  - Enemy
+  - Skill
   layers:
   - Default
   - TransparentFX
