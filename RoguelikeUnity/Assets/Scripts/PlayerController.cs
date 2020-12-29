@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public float delaySkill;                                // 스킬 딜레이 타임
 
     public GameObject FireBall;                             // 스킬 1번 : 화염구
-    public SkillFireBall skillFireBall;                     // 화염구 클래스
+    public SkillFireBall skillFireBall;                 // 스킬 관리 클래스
 
     public UIHealthBar uIHealthBar;                         // 체력바 클래스
     public UIManaBar uIManaBar;                             // 마나바 클래스
@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
         uIHealthBar.SetMaxHealth(maxHealth);                // 체력바 설정
         uIManaBar.SetMaxMana(maxMana);                      // 마나바 설정
+
     }
 
 
