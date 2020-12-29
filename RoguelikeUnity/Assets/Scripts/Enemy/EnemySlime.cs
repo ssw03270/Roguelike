@@ -25,6 +25,7 @@ public class EnemySlime : MonoBehaviour
     private float heightMana = 0.5f;
 
     public GameSystem gameSystem;
+    public PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -112,6 +113,19 @@ public class EnemySlime : MonoBehaviour
                     currentHealth -= int.Parse(gameSystem.skillList[i][5]);
                     break;
                 }
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.name == "Player")
+        {
+            if (!playerController.isInvincible)
+            {
+                playerController.currentHealth -= damage;
+                playerController.invincibleTime = 1f;
+                playerController.isInvincible = true;
             }
         }
     }

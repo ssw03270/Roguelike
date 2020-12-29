@@ -19,10 +19,16 @@ public class PlayerController : MonoBehaviour
     public float delaySkill;                                // 스킬 딜레이 타임
 
     public GameObject FireBall;                             // 스킬 1번 : 화염구
-    public SkillFireBall skillFireBall;                 // 스킬 관리 클래스
+    public SkillFireBall skillFireBall;                     // 스킬 관리 클래스
 
     public UIHealthBar uIHealthBar;                         // 체력바 클래스
     public UIManaBar uIManaBar;                             // 마나바 클래스
+
+    private SpriteRenderer spriteRenderer;                  // 플레이어 스프라이트 정보
+    private Color playerColor;                              // 플레이어 색
+    private bool changeOpacity;                             // 투명도 조절 방향 설정, true 증가, false 감소
+    public bool isInvincible;                               // 플레이어 무적 여부
+    public float invincibleTime;                            // 남은 무적 시간
 
 
     // Start is called before the first frame update
@@ -35,6 +41,8 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;                          // 현재 체력 = 최대 체력
         currentMana = maxMana;                              // 현재 마나 = 최대 마나
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerColor = spriteRenderer.color;
     }
 
 
@@ -51,10 +59,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // TakeDamage(10);
         UseSkill();                                         
         SetAnimation();
         SetResourceBar();
+        CheckInvincible();
     }
 
     /// <summary>
@@ -126,12 +134,47 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 플레이어가 입는 데미지에 관한 함수
-    /// 아직은 작성만 해둔다.
+    /// 플레이어의 무적 여부 확인 함수
+    /// invincibleTime이 0보다 크면 무적 시간이고 그렇지 않으면 무적이 아니다.
+    /// invincibleTime이 0보다 크다면 그렇지 않게 만든다.
     /// </summary>
-    /// <param name="damage">플레이어가 받는 데미지</param>
-    private void TakeDamage(int damage)
+    private void CheckInvincible()
     {
-        currentHealth -= damage;
+        if (isInvincible)
+        {
+            if (changeOpacity)
+            {
+                if (playerColor.a >= 1f)
+                {
+                    changeOpacity = false;
+                }
+                else
+                {
+                    playerColor.a += 0.1f;
+                    spriteRenderer.color = playerColor;
+                }
+            }
+            else
+            {
+                if (playerColor.a <= 0.5f)
+                {
+                    changeOpacity = true;
+                }
+                else
+                {
+                    playerColor.a -= 0.1f;
+                    spriteRenderer.color = playerColor;
+                }
+            }
+        }
+        if(invincibleTime > 0)
+        {
+            isInvincible = true;
+            invincibleTime -= Time.deltaTime;
+        }
+        else if(invincibleTime <= 0)
+        {
+            isInvincible = false;
+        }
     }
 }
