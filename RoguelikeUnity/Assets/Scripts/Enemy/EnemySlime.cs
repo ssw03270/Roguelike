@@ -16,7 +16,7 @@ public class EnemySlime : MonoBehaviour
     private UIManaBar uIManaBar;
     public GameObject objHealthBar;
     public GameObject objManaBar;
-    public GameObject canvas;
+    private GameObject canvas;
 
     RectTransform healthBar;
     RectTransform manaBar;
@@ -24,12 +24,16 @@ public class EnemySlime : MonoBehaviour
     private float heightHealth = 0.65f;
     private float heightMana = 0.5f;
 
-    public GameSystem gameSystem;
-    public PlayerController playerController;
+    private GameSystem gameSystem;
+    private PlayerController playerController;
 
     // Start is called before the first frame update
     void Start()
     {
+        canvas = GameObject.Find("Canvas");
+        gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
         SetState();
 
         healthBar = Instantiate(objHealthBar, canvas.transform).GetComponent<RectTransform>();
