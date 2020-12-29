@@ -13,10 +13,16 @@ public class EnemySlime : MonoBehaviour
     private int damage;
 
     private UIHealthBar uIHealthBar;
+    private UIManaBar uIManaBar;
     public GameObject objHealthBar;
+    public GameObject objManaBar;
     public GameObject canvas;
+
     RectTransform healthBar;
-    private float height = 0.5f;
+    RectTransform manaBar;
+
+    private float heightHealth = 0.65f;
+    private float heightMana = 0.5f;
 
     public GameSystem gameSystem;
 
@@ -26,7 +32,9 @@ public class EnemySlime : MonoBehaviour
         SetState();
 
         healthBar = Instantiate(objHealthBar, canvas.transform).GetComponent<RectTransform>();
+        manaBar = Instantiate(objManaBar, canvas.transform).GetComponent<RectTransform>();
         uIHealthBar = healthBar.gameObject.GetComponent<UIHealthBar>();
+        uIManaBar = manaBar.gameObject.GetComponent<UIManaBar>();
 
     }
 
@@ -34,7 +42,7 @@ public class EnemySlime : MonoBehaviour
     void Update()
     {
         CheckState();
-        SetHealthBar();
+        SetResourceBar();
     }
     /// <summary>
     /// 적의 상태를 설정하는 함수
@@ -66,21 +74,26 @@ public class EnemySlime : MonoBehaviour
         if(currentHealth <= 0)
         {
             Destroy(healthBar.gameObject);
+            Destroy(manaBar.gameObject);
             Destroy(this.gameObject);
         }
     }
 
     /// <summary>
-    /// 적의 체력바를 설정하는 함수
-    /// 체력바의 위치 및 체력 정보를 바탕으로 체력바를 설정한다.
+    /// 적의 체력바와 마나바를 설정하는 함수
+    /// 체력바와 마나바의 위치 및 자원 정보를 바탕으로 값을 설정한다.
     /// </summary>
-    private void SetHealthBar()
+    private void SetResourceBar()
     {
-        Vector3 healthBarPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + height, 0f));
+        Vector3 healthBarPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + heightHealth, 0f));
+        Vector3 manaBarPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + heightMana, 0f));
         healthBar.position = healthBarPos;
+        manaBar.position = manaBarPos;
 
         uIHealthBar.SetMaxHealth(maxHealth);
+        uIManaBar.SetMaxMana(maxMana);
         uIHealthBar.SetCurrentHealth(currentHealth);
+        uIManaBar.SetCurrentMana(currentMana);
     }
 
     /// <summary>

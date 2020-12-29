@@ -7,8 +7,6 @@ public class UIManaBar : MonoBehaviour
 {
     private Slider slider;
 
-    // Start is called before the first frame update
-
     private void Start()
     {
         slider = GetComponent<Slider>();

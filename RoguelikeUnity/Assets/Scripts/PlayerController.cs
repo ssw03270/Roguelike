@@ -35,9 +35,6 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;                          // 현재 체력 = 최대 체력
         currentMana = maxMana;                              // 현재 마나 = 최대 마나
 
-        uIHealthBar.SetMaxHealth(maxHealth);                // 체력바 설정
-        uIManaBar.SetMaxMana(maxMana);                      // 마나바 설정
-
     }
 
 
@@ -56,7 +53,8 @@ public class PlayerController : MonoBehaviour
     {
         // TakeDamage(10);
         UseSkill();                                         
-        SetAnimation();                                     
+        SetAnimation();
+        SetResourceBar();
     }
 
     /// <summary>
@@ -97,6 +95,18 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
+    /// 플레이어의 체력바와 마나바를 설정하는 함수
+    /// 체력과 마나를 바탕으로 설정한다.
+    /// </summary>
+    private void SetResourceBar()
+    {
+        uIHealthBar.SetMaxHealth(maxHealth);                
+        uIManaBar.SetMaxMana(maxMana);                      
+        uIHealthBar.SetCurrentHealth(currentHealth);                
+        uIManaBar.SetCurrentMana(currentMana);                      
+    }
+
+    /// <summary>
     /// 스킬 사용에 관한 함수
     /// 평상시에는 isPlayerAttack가 false로 설정되어 있으나 스킬을 사용할 경우 true로 변한다.
     /// 또한 각 스킬에 맞는 딜레이 시간이 지나면 다시 false로 설정한다.
@@ -123,6 +133,5 @@ public class PlayerController : MonoBehaviour
     private void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        uIHealthBar.SetCurrentHealth(currentHealth);
     }
 }
