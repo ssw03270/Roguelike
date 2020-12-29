@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     public UIHealthBar uIHealthBar;                         // 체력바 클래스
     public UIManaBar uIManaBar;                             // 마나바 클래스
+    public GameSystem gameSystem;                           // 게임 시스템 클래스
 
     private SpriteRenderer spriteRenderer;                  // 플레이어 스프라이트 정보
     private Color playerColor;                              // 플레이어 색
@@ -30,6 +32,12 @@ public class PlayerController : MonoBehaviour
     public bool isInvincible;                               // 플레이어 무적 여부
     public float invincibleTime;                            // 남은 무적 시간
 
+    public TextMeshProUGUI itemCount_01;                    // 아이템 슬롯 01 갯수 UI
+    public TextMeshProUGUI itemCount_02;                    // 아이템 슬롯 02 갯수 UI
+    public TextMeshProUGUI itemCount_03;                    // 아이템 슬롯 03 갯수 UI
+
+    private Dictionary<string, int> itemSlot = new Dictionary<string, int>();   // 아이템 슬롯에 있는 아이템 종류             
+    private Dictionary<string, int> itemCount = new Dictionary<string, int>();  // 아이템 슬롯에 있는 아이템 갯수             
 
     // Start is called before the first frame update
     private void Start()
@@ -43,7 +51,15 @@ public class PlayerController : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerColor = spriteRenderer.color;
-    }
+
+        itemSlot.Add("Z", 1);                               // 체력 포션
+        itemSlot.Add("X", 2);                               // 마나 포션
+        itemSlot.Add("C", 0);                               // 공백
+
+        itemCount.Add("Z", 3);                              // 첫 번째 슬롯 갯수
+        itemCount.Add("X", 3);                              // 두 번째 슬롯 갯수
+        itemCount.Add("C", 0);                              // 세 번째 슬롯 갯수
+    }   
 
 
     /// <summary>
@@ -59,10 +75,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        UseSkill();                                         
+        UseSkill();
+        UseItem();
         SetAnimation();
-        SetResourceBar();
+        SetResourceUI();
         CheckInvincible();
+        CheckState();
     }
 
     /// <summary>
@@ -103,15 +121,19 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// 플레이어의 체력바와 마나바를 설정하는 함수
-    /// 체력과 마나를 바탕으로 설정한다.
+    /// 플레이어의 정보를 UI에 설정하는 함수
+    /// 플레이어가 가진 자원을 바탕으로 UI를 수정한다.
     /// </summary>
-    private void SetResourceBar()
+    private void SetResourceUI()
     {
         uIHealthBar.SetMaxHealth(maxHealth);                
         uIManaBar.SetMaxMana(maxMana);                      
         uIHealthBar.SetCurrentHealth(currentHealth);                
-        uIManaBar.SetCurrentMana(currentMana);                      
+        uIManaBar.SetCurrentMana(currentMana);
+
+        itemCount_01.text = itemCount["Z"].ToString();
+        itemCount_02.text = itemCount["X"].ToString();
+        itemCount_03.text = itemCount["C"].ToString();
     }
 
     /// <summary>
@@ -130,6 +152,69 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && currentMana >= skillFireBall.usedMana && delaySkill <= 0)       // 화염구 스킬 사용
         {
             Instantiate(FireBall, transform.position + new Vector3(lastMove.x, lastMove.y, 0f), transform.rotation);
+        }
+    }
+
+    /// <summary>
+    /// 플레이어 상태 체크 함수
+    /// 최대 체력이나 마나를 벗어날 경우, 바로 잡아준다.
+    /// </summary>
+    private void CheckState()
+    {
+        if(currentHealth >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        if(currentMana >= maxMana)
+        {
+            currentMana = maxMana;
+        }
+    }
+
+    /// <summary>
+    /// 플레이어 아이템 사용 함수
+    /// 키 입력의 종류와 해당 키에 등록되어 있는 아이템에 따른 효과가 발생한다.
+    /// </summary>
+    private void UseItem()
+    {
+        if (Input.GetKeyDown(KeyCode.Z) && itemCount["Z"] > 0)
+        {
+            int itemCode = itemSlot["Z"];
+            itemCount["Z"] -= 1;
+            CheckItemType(itemCode);
+        }
+        if (Input.GetKeyDown(KeyCode.X) && itemCount["X"] > 0)
+        {
+            int itemCode = itemSlot["X"];
+            itemCount["X"] -= 1;
+            CheckItemType(itemCode);
+        }
+        if (Input.GetKeyDown(KeyCode.C) && itemCount["C"] > 0)
+        {
+            int itemCode = itemSlot["C"];
+            itemCount["C"] -= 1;
+            CheckItemType(itemCode);
+        }
+    }
+
+    /// <summary>
+    /// 사용한 아이템 종류 확인 함수
+    /// 어떤 종류의 아이템을 사용했는지 확인하고 그에 맞는 효과를 부여한다.
+    /// </summary>
+    /// <param name="itemCode">사용한 아이템 코드</param>
+    private void CheckItemType(int itemCode)
+    {
+        switch (gameSystem.itemList[itemCode][2])
+        {
+            case "health":
+                currentHealth += int.Parse(gameSystem.itemList[itemCode][3]);
+                break;
+            case "mana":
+                currentMana += int.Parse(gameSystem.itemList[itemCode][3]);
+                break;
+            default:
+                Debug.Log("no item");
+                break;
         }
     }
 
@@ -166,6 +251,11 @@ public class PlayerController : MonoBehaviour
                     spriteRenderer.color = playerColor;
                 }
             }
+        }
+        else
+        {
+            playerColor.a = 1f;
+            spriteRenderer.color = playerColor;
         }
         if(invincibleTime > 0)
         {

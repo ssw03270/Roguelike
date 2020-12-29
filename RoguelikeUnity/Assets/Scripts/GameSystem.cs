@@ -13,7 +13,7 @@ public class GameSystem : MonoBehaviour
     {
         CsvReader("skillList");                                         // 스킬 리스트 정보 저장
         CsvReader("enemyList");                                         // 적 리스트 정보 저장
-        // CsvReader("itemList");
+        CsvReader("itemList");                                          // 아이템 리스트 정보 저장 
     }
 
     /// <summary>
