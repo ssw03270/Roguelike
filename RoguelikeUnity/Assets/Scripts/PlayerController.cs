@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q) && currentMana >= skillFireBall.usedMana && delaySkill <= 0)       // 화염구 스킬 사용
         {
-            Instantiate(FireBall, transform.position + new Vector3(lastMove.x, lastMove.y, 0f), transform.rotation);
+            Instantiate(FireBall, transform.position + new Vector3(lastMove.x / 2, lastMove.y / 2, 0f), transform.rotation);
         }
     }
 
