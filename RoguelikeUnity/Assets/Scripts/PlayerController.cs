@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI essenceCountText;                // 정수 갯수 UI 
 
-    public int roundNum;
+    public int stageNum;
     public bool isWarp;
 
     // Start is called before the first frame update
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
         itemCount.Add("X", 3);                              // 두 번째 슬롯 갯수
         itemCount.Add("C", 0);                              // 세 번째 슬롯 갯수
 
-        roundNum = 0;
+        stageNum = 0;
         isWarp = true;
     }   
 
@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
         SetResourceUI();
         CheckInvincible();
         CheckState();
+        SetResourceBar();
     }
 
     /// <summary>
@@ -167,6 +168,18 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
+    /// 체력바와 마나바를 설정하는 함수
+    /// 체력바와 마나바의 위치 및 자원 정보를 바탕으로 값을 설정한다.
+    /// </summary>
+    private void SetResourceBar()
+    {
+        uIHealthBar.SetMaxHealth(maxHealth);
+        uIManaBar.SetMaxMana(maxMana);
+        uIHealthBar.SetCurrentHealth(currentHealth);
+        uIManaBar.SetCurrentMana(currentMana);
+    }
+
+    /// <summary>
     /// 플레이어 상태 체크 함수
     /// 최대 체력이나 마나를 벗어날 경우, 바로 잡아준다.
     /// </summary>
@@ -176,9 +189,17 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+        }
         if(currentMana >= maxMana)
         {
             currentMana = maxMana;
+        }
+        if (currentMana <= 0)
+        {
+            currentMana = 0;
         }
     }
 
@@ -289,6 +310,11 @@ public class PlayerController : MonoBehaviour
         if (collision.name.Equals("WarpGate"))
         {
             isWarp = true;
+        }
+        if (collision.name.Equals("Enssence(Clone)"))
+        {
+            Destroy(collision.gameObject);
+            essenceCount += 1;
         }
     }
 }

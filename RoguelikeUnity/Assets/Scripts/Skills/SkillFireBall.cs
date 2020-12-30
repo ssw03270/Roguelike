@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class SkillFireBall : MonoBehaviour
 {
-    private Animator animator;
-    private Rigidbody2D rigidbody2D;
-    private Vector2 movePos;
+    private Animator animator;                      // 스킬 애니메이션
+    private Rigidbody2D rigidbody2D;                // 스킬의 rigidbody2d 정보
+    private Vector2 movePos;                        // 스킬이 날아가야하는 방향
 
-    private int skillCode = 0;
-    public int usedMana;
-    public int skillDamage;
-    private float usedDelay;
-    private float moveSpeed;
+    private int skillCode = 0;                      // 스킬 코드 번호, 화염구 == 0
+    public int usedMana;                            // 스킬이 사용하는 마나
+    public int skillDamage;                         // 스킬이 가하는 데미지
+    private float usedDelay;                        // 스킬이 주는 딜레이
+    private float moveSpeed;                        // 스킬이 날라가는 속도
 
-    private PlayerController playerController;
-    private UIManaBar uIManaBar;
-    private GameSystem gameSystem;
+    private PlayerController playerController;      // 플레이어 컨트롤러 클래스
+    private GameSystem gameSystem;                  // 게임 시스템 클래스
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject playerObject = GameObject.Find("Player");
         playerController = playerObject.GetComponent<PlayerController>();
-        GameObject uiManaBarObject = GameObject.Find("ManaBar");
-        uIManaBar = uiManaBarObject.GetComponent<UIManaBar>();
         gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
 
         animator = GetComponent<Animator>();
@@ -37,7 +34,6 @@ public class SkillFireBall : MonoBehaviour
         animator.SetFloat("MoveY", movePos.y);
         
         playerController.currentMana -= usedMana;
-        uIManaBar.SetCurrentMana(playerController.currentMana);
 
         usedDelay = float.Parse(gameSystem.skillList[skillCode][4]);
         playerController.delaySkill = usedDelay;

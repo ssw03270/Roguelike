@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class EnemySkeletonHead : MonoBehaviour
 {
-    private string enemyName = "SkeletonHead";
+    private string enemyName = "SkeletonHead";      // 적 이름
 
-    private int currentHealth;
-    private int currentMana;
-    private int maxHealth;
-    private int maxMana;
-    private int damage;
+    private int currentHealth;                      // 적 현재 체력
+    private int currentMana;                        // 적 현재 마나
+    private int maxHealth;                          // 적 최대 체력
+    private int maxMana;                            // 적 최대 마나
+    private int damage;                             // 적이 가진 공격력
 
-    private UIHealthBar uIHealthBar;
-    private UIManaBar uIManaBar;
-    public GameObject objHealthBar;
-    public GameObject objManaBar;
-    private GameObject canvas;
+    private UIHealthBar uIHealthBar;                // 적의 체력바 UI
+    private UIManaBar uIManaBar;                    // 적의 마나바 UI
+    public GameObject objHealthBar;                 // 체력바 오브젝트
+    public GameObject objManaBar;                   // 마나바 오브젝트
+    private GameObject canvas;                      // 캔버스
 
-    RectTransform healthBar;
-    RectTransform manaBar;
+    RectTransform healthBar;                        // 캔버스에서의 체력바
+    RectTransform manaBar;                          // 캔버스에서의 마나바
 
-    private float heightHealth = 0.65f;
-    private float heightMana = 0.5f;
+    private float heightHealth = 0.65f;             // 체력바 배치 위치
+    private float heightMana = 0.5f;                // 마나바 배치 위치
 
-    private GameSystem gameSystem;
-    private PlayerController playerController;
+    private GameSystem gameSystem;                  // 게임 시스템 클래스
+    private PlayerController playerController;      // 플레이어 컨트롤러 클래스
 
     // Start is called before the first frame update
     void Start()
@@ -78,8 +78,6 @@ public class EnemySkeletonHead : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            Destroy(healthBar.gameObject);
-            Destroy(manaBar.gameObject);
             Destroy(this.transform.parent.gameObject);
         }
     }
@@ -121,6 +119,10 @@ public class EnemySkeletonHead : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 적이 삭제 (사망) 되었을 때 실행되는 함수
+    /// 적이 가진 체력바와 마나바를 삭제한다.
+    /// </summary>
     private void OnDestroy()
     {
         try
@@ -136,9 +138,9 @@ public class EnemySkeletonHead : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.name.Equals("Player"))
+        if(collision.name.Equals("Player"))         // 플레이어와 충돌한 경우
         {
-            if (!playerController.isInvincible)
+            if (!playerController.isInvincible)     // 플레이어가 무적 상태가 아닌 경우 데미지 가함
             {
                 playerController.currentHealth -= damage;
                 playerController.invincibleTime = 1f;
