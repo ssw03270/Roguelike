@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public int maxHealth;                                   // 플레이어 최대 체력
     public int maxMana;                                     // 플레이어 최대 마나
     public float delaySkill;                                // 스킬 딜레이 타임
+    private int essenceCount;                               // 정수 갯수
 
     public GameObject FireBall;                             // 스킬 1번 : 화염구
     public SkillFireBall skillFireBall;                     // 스킬 관리 클래스
@@ -38,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private Dictionary<string, int> itemSlot = new Dictionary<string, int>();   // 아이템 슬롯에 있는 아이템 종류             
     private Dictionary<string, int> itemCount = new Dictionary<string, int>();  // 아이템 슬롯에 있는 아이템 갯수             
+
+    public TextMeshProUGUI essenceCountText;                // 정수 갯수 UI 
 
     public int roundNum;
     public bool isWarp;
@@ -140,6 +143,8 @@ public class PlayerController : MonoBehaviour
         itemCount_01.text = itemCount["Z"].ToString();
         itemCount_02.text = itemCount["X"].ToString();
         itemCount_03.text = itemCount["C"].ToString();
+
+        essenceCountText.text = essenceCount.ToString();
     }
 
     /// <summary>
