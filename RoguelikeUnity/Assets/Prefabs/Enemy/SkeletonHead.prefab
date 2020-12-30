@@ -146,6 +146,10 @@ MonoBehaviour:
     type: 3}
   objManaBar: {fileID: 4362514900555263392, guid: 4275b6e904d335746a7ead3b8b2f01b0,
     type: 3}
+  itemList:
+  - {fileID: 2955001551285007487, guid: e7e70f6d48a2fa943b4be530bbac3ab9, type: 3}
+  itemProbability:
+  - 0.75
 --- !u!1 &7506512761106489345
 GameObject:
   m_ObjectHideFlags: 0

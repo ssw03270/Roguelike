@@ -311,7 +311,7 @@ public class PlayerController : MonoBehaviour
         {
             isWarp = true;
         }
-        if (collision.name.Equals("Enssence(Clone)"))
+        if (collision.name.Equals("Essence(Clone)"))
         {
             Destroy(collision.gameObject);
             essenceCount += 1;

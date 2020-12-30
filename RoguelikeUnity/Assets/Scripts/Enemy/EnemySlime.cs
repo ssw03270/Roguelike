@@ -27,6 +27,8 @@ public class EnemySlime : MonoBehaviour
     private GameSystem gameSystem;                  // 게임 시스템 클래스
     private PlayerController playerController;      // 플레이어 컨트롤러 클래스
 
+    public List<GameObject> itemList;               // 드랍할 아이템 리스트
+    public List<float> itemProbability;             // 아이템이 드랍될 확률
     // Start is called before the first frame update
     void Start()
     {
@@ -77,10 +79,26 @@ public class EnemySlime : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
+            DropItem();
             Destroy(this.transform.parent.gameObject);
         }
     }
 
+    /// <summary>
+    /// 아이템 드롭과 관련된 함수
+    /// 해당 아이템과 그 아이템이 떨어질 확률 등을 통해 아이템을 드랍한다.
+    /// </summary>
+    private void DropItem()
+    {
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            float probability = Random.Range(0f, 1f);
+            if (probability < itemProbability[i])
+            {
+                Instantiate(itemList[i], transform.position, transform.rotation).transform.parent = transform.parent.parent;
+            }
+        }
+    }
     /// <summary>
     /// 적의 체력바와 마나바를 설정하는 함수
     /// 체력바와 마나바의 위치 및 자원 정보를 바탕으로 값을 설정한다.

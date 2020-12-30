@@ -48,7 +48,7 @@ public class DetectPlayer : MonoBehaviour
                 targetNotDetect = new Vector3(Random.Range(-2f, 2f), Random.Range(-2f, 2f), 0) + transform.position;
                 timer += 0.5f;
             }
-            transform.position = Vector3.MoveTowards(transform.position, targetNotDetect, moveSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, targetNotDetect, moveSpeed * Time.deltaTime);
         }
         if(targetNotDetect.x <= -6.5f || targetNotDetect.x >= 7.5f || targetNotDetect.y >= 2.5f || targetNotDetect.y <= -3.5)
         {
@@ -61,7 +61,7 @@ public class DetectPlayer : MonoBehaviour
         if (collision.name.Equals("Player"))            // 플레이어를 감지한 경우, 쫒아간다.
         {
             isEnter = true;
-            transform.position = Vector3.MoveTowards(transform.position, collision.transform.position, moveSpeed);
+            transform.position = Vector3.MoveTowards(transform.position, collision.transform.position, moveSpeed * Time.deltaTime);
         }
     }
 
