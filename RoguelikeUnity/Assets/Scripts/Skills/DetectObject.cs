@@ -17,8 +17,9 @@ public class DetectObject : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        Debug.Log(collision.name);
-        Destroy(this.transform.parent.gameObject);
+        if(collision.tag.Equals("Object") || collision.tag.Equals("Enemy"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

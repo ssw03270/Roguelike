@@ -19,9 +19,15 @@ public class UIManaBar : MonoBehaviour
     /// <param name="mana">주어진 최대 마나</param>
     public void SetMaxMana(int mana)
     {
-
-        slider.maxValue = mana;
-        slider.value = mana;
+        try
+        {
+            slider.maxValue = mana;
+            slider.value = mana;
+        }
+        catch
+        {
+            Debug.Log("Error while set the resource bar.");
+        }
     }
 
     /// <summary>

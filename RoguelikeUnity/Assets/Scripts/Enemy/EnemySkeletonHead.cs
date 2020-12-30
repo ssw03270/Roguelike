@@ -121,6 +121,19 @@ public class EnemySkeletonHead : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            Destroy(healthBar.gameObject);
+            Destroy(manaBar.gameObject);
+        }
+        catch
+        {
+            Debug.Log("Error while destoy the enemy resource bar.");
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.name.Equals("Player"))

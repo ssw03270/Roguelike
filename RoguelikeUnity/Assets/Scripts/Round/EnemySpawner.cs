@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        Instantiate(enemyList[Random.Range(0,enemyList.Count)], transform.position, transform.rotation);
+        Instantiate(enemyList[Random.Range(0,enemyList.Count)], transform.position, transform.rotation).transform.parent = transform.parent;
         Destroy(this.gameObject);
     }
 

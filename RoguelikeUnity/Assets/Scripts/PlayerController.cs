@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     private Dictionary<string, int> itemSlot = new Dictionary<string, int>();   // 아이템 슬롯에 있는 아이템 종류             
     private Dictionary<string, int> itemCount = new Dictionary<string, int>();  // 아이템 슬롯에 있는 아이템 갯수             
 
+    public int roundNum;
+    public bool isWarp;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -59,6 +62,9 @@ public class PlayerController : MonoBehaviour
         itemCount.Add("Z", 3);                              // 첫 번째 슬롯 갯수
         itemCount.Add("X", 3);                              // 두 번째 슬롯 갯수
         itemCount.Add("C", 0);                              // 세 번째 슬롯 갯수
+
+        roundNum = 0;
+        isWarp = true;
     }   
 
 
@@ -218,6 +224,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ResetPosition()
+    {
+        transform.position = new Vector3(0f, -3.5f, 0f);
+    }
+
     /// <summary>
     /// 플레이어의 무적 여부 확인 함수
     /// invincibleTime이 0보다 크면 무적 시간이고 그렇지 않으면 무적이 아니다.
@@ -265,6 +276,14 @@ public class PlayerController : MonoBehaviour
         else if(invincibleTime <= 0)
         {
             isInvincible = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name.Equals("WarpGate"))
+        {
+            isWarp = true;
         }
     }
 }

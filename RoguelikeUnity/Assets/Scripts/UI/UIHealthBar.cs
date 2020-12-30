@@ -19,9 +19,15 @@ public class UIHealthBar : MonoBehaviour
     /// <param name="health">최대 체력</param>
     public void SetMaxHealth(int health)
     {
-
-        slider.maxValue = health;
-        slider.value = health;
+        try
+        {
+            slider.maxValue = health;
+            slider.value = health;
+        }
+        catch
+        {
+            Debug.Log("Error while set the resource bar.");
+        }
     }
 
     /// <summary>
