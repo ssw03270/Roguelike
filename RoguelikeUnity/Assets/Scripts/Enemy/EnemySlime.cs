@@ -34,12 +34,12 @@ public class EnemySlime : MonoBehaviour
         gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
 
-        SetState();
-
         healthBar = Instantiate(objHealthBar, canvas.transform).GetComponent<RectTransform>();
         manaBar = Instantiate(objManaBar, canvas.transform).GetComponent<RectTransform>();
-        uIHealthBar = healthBar.gameObject.GetComponent<UIHealthBar>();
-        uIManaBar = manaBar.gameObject.GetComponent<UIManaBar>();
+        uIHealthBar = healthBar.GetComponent<UIHealthBar>();
+        uIManaBar = manaBar.GetComponent<UIManaBar>();
+
+        SetState();
 
     }
 
@@ -58,14 +58,13 @@ public class EnemySlime : MonoBehaviour
     {
         for (int i = 0; i < gameSystem.enemyList.Count; i++)
         {
-            if (gameSystem.enemyList[i][1] == enemyName)
+            if (gameSystem.enemyList[i][1].Equals(enemyName))
             {
                 maxHealth = int.Parse(gameSystem.enemyList[i][2]);
                 currentHealth = maxHealth;
                 maxMana = int.Parse(gameSystem.enemyList[i][3]);
                 currentMana = maxMana;
                 damage = int.Parse(gameSystem.enemyList[i][4]);
-
                 break;
             }
         }
@@ -80,7 +79,7 @@ public class EnemySlime : MonoBehaviour
         {
             Destroy(healthBar.gameObject);
             Destroy(manaBar.gameObject);
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
         }
     }
 
@@ -108,11 +107,11 @@ public class EnemySlime : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Skill")
+        if (collision.tag.Equals("Skill"))
         {
             for (int i = 0; i < gameSystem.skillList.Count; i++)
             {
-                if (gameSystem.skillList[i][1] + " (Clone)" == collision.name)
+                if ((gameSystem.skillList[i][1] + " (Clone)").Equals(collision.name))
                 {
                     currentHealth -= int.Parse(gameSystem.skillList[i][5]);
                     break;
@@ -123,7 +122,7 @@ public class EnemySlime : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.name == "Player")
+        if(collision.name.Equals("Player"))
         {
             if (!playerController.isInvincible)
             {

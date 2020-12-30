@@ -8,13 +8,15 @@ public class SkillFireBall : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Vector2 movePos;
 
+    private int skillCode = 0;
     public int usedMana;
     public int skillDamage;
-    private float usedDelay = 1f;
+    private float usedDelay;
     private float moveSpeed;
 
     private PlayerController playerController;
     private UIManaBar uIManaBar;
+    private GameSystem gameSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class SkillFireBall : MonoBehaviour
         playerController = playerObject.GetComponent<PlayerController>();
         GameObject uiManaBarObject = GameObject.Find("ManaBar");
         uIManaBar = uiManaBarObject.GetComponent<UIManaBar>();
+        gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
 
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -36,6 +39,7 @@ public class SkillFireBall : MonoBehaviour
         playerController.currentMana -= usedMana;
         uIManaBar.SetCurrentMana(playerController.currentMana);
 
+        usedDelay = float.Parse(gameSystem.skillList[skillCode][4]);
         playerController.delaySkill = usedDelay;
     }
 
@@ -45,11 +49,4 @@ public class SkillFireBall : MonoBehaviour
         rigidbody2D.velocity = movePos * moveSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.name == "Wall")
-        {
-            Destroy(this.gameObject);
-        }
-    }
 }

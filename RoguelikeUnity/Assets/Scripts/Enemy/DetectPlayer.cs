@@ -19,7 +19,7 @@ public class DetectPlayer : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name == "Player")
+        if (collision.name.Equals("Player"))
         {
             transform.position = Vector3.MoveTowards(transform.position, collision.transform.position, moveSpeed);
         }

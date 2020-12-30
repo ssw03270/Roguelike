@@ -64,9 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy\DetectPlayer.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySkeletonHead.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySlime.cs" />
     <Compile Include="Assets\Scripts\GameSystem.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Round\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Round\MapSpawner.cs" />
+    <Compile Include="Assets\Scripts\Skills\DetectObject.cs" />
     <Compile Include="Assets\Scripts\Skills\SkillFireBall.cs" />
     <Compile Include="Assets\Scripts\UI\UIHealthBar.cs" />
     <Compile Include="Assets\Scripts\UI\UIManaBar.cs" />

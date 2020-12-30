@@ -35,15 +35,15 @@ public class GameSystem : MonoBehaviour
                 list.Add(content);
             }
 
-            if(fileName == "skillList")
+            if(fileName.Equals("skillList"))
             {
                 skillList.Add(list);
             }
-            else if(fileName == "enemyList")
+            else if(fileName.Equals("enemyList"))
             {
                 enemyList.Add(list);
             }
-            else if (fileName == "itemList")
+            else if (fileName.Equals("itemList"))
             {
                 itemList.Add(list);
             }
