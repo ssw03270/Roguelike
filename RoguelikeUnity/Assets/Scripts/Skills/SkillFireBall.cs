@@ -9,8 +9,8 @@ public class SkillFireBall : MonoBehaviour
     private Vector2 movePos;                        // 스킬이 날아가야하는 방향
 
     private int skillCode = 0;                      // 스킬 코드 번호, 화염구 == 0
-    public int usedMana;                            // 스킬이 사용하는 마나
-    public int skillDamage;                         // 스킬이 가하는 데미지
+    private int usedMana;                           // 스킬이 사용하는 마나
+    private int skillDamage;                        // 스킬이 가하는 데미지
     private float usedDelay;                        // 스킬이 주는 딜레이
     private float moveSpeed;                        // 스킬이 날라가는 속도
 
@@ -27,6 +27,15 @@ public class SkillFireBall : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
 
+        usedMana = int.Parse(gameSystem.skillList[skillCode][3]);
+        usedDelay = float.Parse(gameSystem.skillList[skillCode][4]);
+        skillDamage = int.Parse(gameSystem.skillList[skillCode][5]);
+
+        if (playerController.currentMana < usedMana)
+        {
+            Destroy(this.gameObject);
+        }
+
         movePos = playerController.lastMove;
         moveSpeed = 5f;
 
@@ -35,7 +44,6 @@ public class SkillFireBall : MonoBehaviour
         
         playerController.currentMana -= usedMana;
 
-        usedDelay = float.Parse(gameSystem.skillList[skillCode][4]);
         playerController.delaySkill = usedDelay;
     }
 

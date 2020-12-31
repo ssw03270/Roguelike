@@ -2093,6 +2093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa726da0fd12d149b10a0cf6bd89107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillCondition: 0101
   lastMove: {x: 0, y: -1}
   currentHealth: 100
   currentMana: 100
@@ -2101,7 +2102,11 @@ MonoBehaviour:
   delaySkill: 0
   FireBall: {fileID: 2422391621521082757, guid: 08af7bc7490c503409ec861457c932aa,
     type: 3}
+  Lightning: {fileID: 1186326207500162511, guid: edaf5fc06b9bbdd4aa1f485cd4ba91e7,
+    type: 3}
   skillFireBall: {fileID: 741505058069657766, guid: 08af7bc7490c503409ec861457c932aa,
+    type: 3}
+  skillLightning: {fileID: 4206837920590251185, guid: edaf5fc06b9bbdd4aa1f485cd4ba91e7,
     type: 3}
   uIHealthBar: {fileID: 1107270411}
   uIManaBar: {fileID: 1673407284}
@@ -2112,7 +2117,7 @@ MonoBehaviour:
   itemCount_02: {fileID: 841314432}
   itemCount_03: {fileID: 855074781}
   essenceCountText: {fileID: 463272921}
-  roundNum: 0
+  stageNum: 0
   isWarp: 1
 --- !u!61 &1237805388
 BoxCollider2D:

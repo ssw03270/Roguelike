@@ -1,2 +1,3 @@
 ﻿0,FireBall,Projectile,5,0.1,5
+1,Lightning,Prompt,10,0.5,20
 code,name,type,mana,delay,damage

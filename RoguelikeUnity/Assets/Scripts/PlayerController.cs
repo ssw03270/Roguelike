@@ -6,8 +6,9 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     private Animator animator;
+    private Camera camera;
 
-    private List<bool> skillCondition = new List<bool>();   // 스킬 습득 여부 확인 리스트
+    public List<bool> skillCondition = new List<bool>();   // 스킬 습득 여부 확인 리스트
     private float moveSpeed = 3f;                           // 플레이어 이동 속도
     private bool isPlayerMove;                              // 플레이어가 이동 여부 확인
     private bool isPlayerAttack;                            // 플레이어 공격 여부 확인
@@ -21,7 +22,9 @@ public class PlayerController : MonoBehaviour
     private int essenceCount;                               // 정수 갯수
 
     public GameObject FireBall;                             // 스킬 1번 : 화염구
-    public SkillFireBall skillFireBall;                     // 스킬 관리 클래스
+    public GameObject Lightning;                            // 스킬 1번 : 번개작렬
+    public SkillFireBall skillFireBall;                     // 스킬 화염구 관리 클래스
+    public SkillLightning skillLightning;                   // 스킬 번개작렬 관리 클래스
 
     public UIHealthBar uIHealthBar;                         // 체력바 클래스
     public UIManaBar uIManaBar;                             // 마나바 클래스
@@ -49,8 +52,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();                // 애니메이터 컴포넌트 설정
-
-        skillCondition.Add(true);                           //  스킬 화염구 추가 (임시)
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         currentHealth = maxHealth;                          // 현재 체력 = 최대 체력
         currentMana = maxMana;                              // 현재 마나 = 최대 마나
@@ -161,9 +163,15 @@ public class PlayerController : MonoBehaviour
             delaySkill -= Time.deltaTime;
             isPlayerAttack = true;
         }
-        if (Input.GetKeyDown(KeyCode.Q) && currentMana >= skillFireBall.usedMana && delaySkill <= 0)       // 화염구 스킬 사용
+        if (Input.GetKeyDown(KeyCode.Q) && delaySkill <= 0)        // 화염구 스킬 사용
         {
             Instantiate(FireBall, transform.position + new Vector3(lastMove.x / 2, lastMove.y / 2, 0f), transform.rotation);
+        }
+        if (Input.GetKeyDown(KeyCode.E) && delaySkill <= 0)       // 번개작렬 스킬 사용
+        {
+            Vector3 targetPos = camera.ScreenToWorldPoint(Input.mousePosition);
+            targetPos.z = 0;
+            Instantiate(Lightning, targetPos, transform.rotation);
         }
     }
 
