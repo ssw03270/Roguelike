@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     public int stageNum;
     public bool isWarp;
 
+    public TextMeshProUGUI stageNumText;                    // 스테지이 번호 UI
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -148,6 +150,8 @@ public class PlayerController : MonoBehaviour
         itemCount_03.text = itemCount["C"].ToString();
 
         essenceCountText.text = essenceCount.ToString();
+
+        stageNumText.text = stageNum.ToString();
     }
 
     /// <summary>
@@ -315,7 +319,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.name.Equals("WarpGate"))
+        if (collision.tag.Equals("WarpGate"))
         {
             isWarp = true;
         }
@@ -323,6 +327,10 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             essenceCount += 1;
+        }
+        if (collision.tag.Equals("ItemBox"))
+        {
+
         }
     }
 }

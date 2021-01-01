@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySlime : MonoBehaviour
 {
-    private string enemyName = "Slime";             // 적 이름
+    public string enemyName = "Slime";             // 적 이름
 
     private int currentHealth;                      // 적 현재 체력
     private int currentMana;                        // 적 현재 마나

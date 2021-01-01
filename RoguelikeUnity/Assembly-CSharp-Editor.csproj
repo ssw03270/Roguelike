@@ -285,9 +285,6 @@
     <Reference Include="Ionic.Zip">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Assets/AnimationImporter/Editor/PyxelEdit/Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/PackageCache/com.unity.render-pipelines.core@7.4.3/Editor/ShaderGenerator/ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
@@ -651,9 +648,6 @@
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
@@ -663,17 +657,8 @@
     <Reference Include="Unity.2D.PixelPerfect.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
@@ -683,12 +668,6 @@
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
@@ -705,14 +684,8 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
@@ -729,9 +702,6 @@
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
@@ -744,14 +714,8 @@
     <Reference Include="Unity.2D.Animation.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/ttd85/Documents/GitHub/Roguelike/RoguelikeUnity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

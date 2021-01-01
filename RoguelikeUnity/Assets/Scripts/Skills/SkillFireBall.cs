@@ -35,16 +35,18 @@ public class SkillFireBall : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        else
+        {
+            movePos = playerController.lastMove;
+            moveSpeed = 5f;
 
-        movePos = playerController.lastMove;
-        moveSpeed = 5f;
+            animator.SetFloat("MoveX", movePos.x);
+            animator.SetFloat("MoveY", movePos.y);
 
-        animator.SetFloat("MoveX", movePos.x);
-        animator.SetFloat("MoveY", movePos.y);
-        
-        playerController.currentMana -= usedMana;
+            playerController.currentMana -= usedMana;
 
-        playerController.delaySkill = usedDelay;
+            playerController.delaySkill = usedDelay;
+        }
     }
 
     // Update is called once per frame

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7506512760661076011}
   - component: {fileID: 7506512760661076008}
   - component: {fileID: 7506512760661076014}
-  - component: {fileID: 3624284061240255342}
+  - component: {fileID: 4545643488055161593}
   m_Layer: 0
   m_Name: Body
   m_TagString: Enemy
@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -130,7 +130,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.64709425, y: 0.773499}
   m_EdgeRadius: 0
---- !u!114 &3624284061240255342
+--- !u!114 &4545643488055161593
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,9 +139,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7506512760661076015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0be87ff330e7a2e4e92b3ac9c2085bc5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fc24b5aacfb4274e8d0776fd7e4a69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: SkeletonHead
   objHealthBar: {fileID: 7184727977415256317, guid: 010850cc7ffe8374b92f5be1f4aa4b08,
     type: 3}
   objManaBar: {fileID: 4362514900555263392, guid: 4275b6e904d335746a7ead3b8b2f01b0,

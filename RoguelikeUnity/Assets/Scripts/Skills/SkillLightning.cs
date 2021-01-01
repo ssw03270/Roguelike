@@ -28,9 +28,12 @@ public class SkillLightning : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        else
+        {
+            playerController.currentMana -= usedMana;
+            playerController.delaySkill = usedDelay;
+        }
 
-        playerController.currentMana -= usedMana;
-        playerController.delaySkill = usedDelay;
     }
 
     // Update is called once per frame

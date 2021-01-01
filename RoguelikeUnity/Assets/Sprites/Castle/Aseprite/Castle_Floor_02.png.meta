@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -1247854635559860361
     second: Castle_Floor_02_0
+  - first:
+      213: -7159112330349395351
+    second: Castle_Floor_02_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,8 +107,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 777412402dabeaee0800000000000000
-      internalID: -1247854635559860361
+      spriteID: 962c7622449b5ac90800000000000000
+      internalID: -7159112330349395351
       vertices: []
       indices: 
       edges: []

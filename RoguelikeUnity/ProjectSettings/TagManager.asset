@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Skill
   - Object
+  - WarpGate
+  - ItemBox
   layers:
   - Default
   - TransparentFX
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: Wall
     uniqueID: 1204934645
+    locked: 0
+  - name: Object
+    uniqueID: 1567286857
     locked: 0
   - name: World
     uniqueID: 1063850393
