@@ -828,7 +828,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cd811cd60b5ed6140a0a02d7e536f30d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.078
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1348,13 +1348,88 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 931097135}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 25, y: -24.999989}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &888722072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 888722073}
+  - component: {fileID: 888722075}
+  - component: {fileID: 888722074}
+  m_Layer: 5
+  m_Name: SkillImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &888722073
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888722072}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_Children: []
+  m_Father: {fileID: 931097135}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &888722074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888722072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 2292637821454117501, guid: fce605ae07545894dbc8a2b2f9a9f673,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &888722075
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888722072}
+  m_CullTransparentMesh: 0
 --- !u!1 &891359069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1645,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 926988441}
+  - {fileID: 888722073}
   - {fileID: 979874018}
   - {fileID: 1370401232}
   - {fileID: 855074783}
@@ -1802,7 +1878,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 931097135}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2391,13 +2467,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa726da0fd12d149b10a0cf6bd89107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCondition: 0101
+  skillCondition: 0000000001000000
   lastMove: {x: 0, y: -1}
   currentHealth: 100
   currentMana: 100
   maxHealth: 100
   maxMana: 100
   delaySkill: 0
+  essenceCount: 0
   FireBall: {fileID: 2422391621521082757, guid: 08af7bc7490c503409ec861457c932aa,
     type: 3}
   Lightning: {fileID: 1186326207500162511, guid: edaf5fc06b9bbdd4aa1f485cd4ba91e7,
@@ -2411,11 +2488,17 @@ MonoBehaviour:
   gameSystem: {fileID: 936011810}
   isInvincible: 0
   invincibleTime: 0
-  itemCount_01: {fileID: 329920372}
-  itemCount_02: {fileID: 841314432}
-  itemCount_03: {fileID: 855074781}
+  slotText_01: {fileID: 329920372}
+  slotText_02: {fileID: 841314432}
+  slotText_03: {fileID: 855074781}
+  slotSkillImage: {fileID: 888722074}
+  healthPotionCount: 3
+  manaPotionCount: 3
+  currentSkillNumber: 0
+  healthPotionPower: 20
+  manaPotionPower: 20
   essenceCountText: {fileID: 463272921}
-  stageNum: 4
+  stageNum: 0
   isWarp: 1
   stageNumText: {fileID: 1233703457}
 --- !u!61 &1237805388
@@ -2704,7 +2787,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 931097135}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
