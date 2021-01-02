@@ -6,7 +6,6 @@ public class SkillFireBall : MonoBehaviour
 {
     private Animator animator;                      // 스킬 애니메이션
     private Rigidbody2D rigidbody2D;                // 스킬의 rigidbody2d 정보
-    private Vector2 movePos;                        // 스킬이 날아가야하는 방향
 
     private int skillCode = 0;                      // 스킬 코드 번호, 화염구 == 0
     private int usedMana;                           // 스킬이 사용하는 마나
@@ -37,11 +36,7 @@ public class SkillFireBall : MonoBehaviour
         }
         else
         {
-            movePos = playerController.lastMove;
             moveSpeed = 5f;
-
-            animator.SetFloat("MoveX", movePos.x);
-            animator.SetFloat("MoveY", movePos.y);
 
             playerController.currentMana -= usedMana;
 
@@ -52,7 +47,7 @@ public class SkillFireBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidbody2D.velocity = movePos * moveSpeed;
+        transform.Translate(new Vector3(1, 0, 0) * moveSpeed * Time.deltaTime);
     }
 
 }

@@ -172,15 +172,18 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.C) && delaySkill <= 0)
         {
+            Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
             switch (skillCondition[currentSkillNumber])
             {
                 case 0:
-                    Instantiate(FireBall, transform.position + new Vector3(lastMove.x / 2, lastMove.y / 2, 0f), transform.rotation);
+                    mousePos -= transform.position;
+                    float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+                    Quaternion mouseRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                    Instantiate(FireBall, transform.position, mouseRotation);
                     break;
                 case 1:
-                    Vector3 targetPos = camera.ScreenToWorldPoint(Input.mousePosition);
-                    targetPos.z = 0;
-                    Instantiate(Lightning, targetPos, transform.rotation);
+                    Instantiate(Lightning, mousePos, transform.rotation);
                     break;
             }
         }
