@@ -16,11 +16,14 @@ public class UIItemBox : MonoBehaviour
 
     public int itemBoxType;                             // 아이템 박스 타입, 0 == 랜덤박스, 1 == 체력포션, 2 == 마나포션
 
+    private GameSystem gameSystem;                      // 게임 시스템 클래스
+
     // Start is called before the first frame update
     void Start()
     {
         canvas = GameObject.Find("Canvas");
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
 
         itemBoxUI = Instantiate(itemBoxObj, canvas.transform).GetComponent<RectTransform>();
 
@@ -61,7 +64,9 @@ public class UIItemBox : MonoBehaviour
                 switch (itemBoxType)
                 {
                     case 0:
-
+                        int itemCode = Random.Range(0, gameSystem.itemList.Count - 1);
+                        GameObject randomItem = Resources.Load<GameObject>("Prefabs/Item/" + gameSystem.itemList[itemCode][1]);
+                        Instantiate(randomItem, transform.position, transform.rotation);
                         break;
                     case 1:
                         playerController.healthPotionCount += 1;
