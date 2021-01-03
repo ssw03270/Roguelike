@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Skills\DetectObject.cs" />
     <Compile Include="Assets\Scripts\Skills\SkillFireBall.cs" />
     <Compile Include="Assets\Scripts\Skills\SkillLightning.cs" />
+    <Compile Include="Assets\Scripts\Skills\SpellController.cs" />
     <Compile Include="Assets\Scripts\Stage\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Stage\MapSpawner.cs" />
     <Compile Include="Assets\Scripts\UI\UIHealthBar.cs" />

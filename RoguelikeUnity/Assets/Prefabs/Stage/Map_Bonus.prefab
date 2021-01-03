@@ -2013,8 +2013,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 654634522269520529}
-  - {fileID: 972002204959074389}
   - {fileID: 4719790005990692196}
+  - {fileID: 972002204959074389}
   - {fileID: 8022906545753431492}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2200,7 +2200,7 @@ GameObject:
   - component: {fileID: 5806872388383776872}
   - component: {fileID: 7803142277676408440}
   m_Layer: 0
-  m_Name: ItemBox (1)
+  m_Name: ItemBox_HealthPotion
   m_TagString: ItemBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2218,7 +2218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 654634523650244507}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8195656590223162776
 SpriteRenderer:
@@ -2259,7 +2259,7 @@ SpriteRenderer:
   m_SortingLayerID: 1567286857
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3c09144681a8d4f44a54a7726b89eb9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa888880ebb65774c97f116f5d0d4e58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2310,6 +2310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemBoxObj: {fileID: 4362514900555263392, guid: 77adfb11d3ecb3d4baa62f6c22ba2179,
     type: 3}
+  itemBoxType: 1
 --- !u!1 &5414064721526540353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2324,7 @@ GameObject:
   - component: {fileID: 7695703167031158241}
   - component: {fileID: 2259508238068962331}
   m_Layer: 0
-  m_Name: ItemBox (2)
+  m_Name: ItemBox_ManaPotion
   m_TagString: ItemBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2382,7 +2383,7 @@ SpriteRenderer:
   m_SortingLayerID: 1567286857
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3c09144681a8d4f44a54a7726b89eb9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0397d18902d48c54f875d989edf776b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2433,6 +2434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemBoxObj: {fileID: 4362514900555263392, guid: 77adfb11d3ecb3d4baa62f6c22ba2179,
     type: 3}
+  itemBoxType: 2
 --- !u!1 &6387484560508339902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,7 +2448,7 @@ GameObject:
   - component: {fileID: 1576481504898039994}
   - component: {fileID: 3616478881727811970}
   m_Layer: 0
-  m_Name: ItemBox
+  m_Name: ItemBox_Random
   m_TagString: ItemBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2464,7 +2466,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 654634523650244507}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8942734236576907747
 SpriteRenderer:
@@ -2556,3 +2558,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemBoxObj: {fileID: 4362514900555263392, guid: 77adfb11d3ecb3d4baa62f6c22ba2179,
     type: 3}
+  itemBoxType: 0

@@ -5,23 +5,32 @@ using TMPro;
 
 public class UIItemBox : MonoBehaviour
 {
-    private GameObject canvas;                      // 캔버스
-    public GameObject itemBoxObj;                   // 아이템 박스 UI 오브젝트
-    RectTransform itemBoxUI;                        // 캔버스에서의 아이템 박스 UI
-    int essenceCount;
+    private GameObject canvas;                          // 캔버스
+    RectTransform itemBoxUI;                            // 캔버스에서의 아이템 박스 UI
+    public GameObject itemBoxObj;                       // 아이템 박스 UI 오브젝트
+
+    int essenceCount;                                   // 랜덤하게 정해질 아이템의 가격 == 정수 갯수
+
     private TextMeshProUGUI essenceCountText;           // 아이템 박스에 표기할 정수 갯수 
-    private PlayerController playerController;      // 플레이어 컨트롤러 클래스
+    private PlayerController playerController;          // 플레이어 컨트롤러 클래스
+
+    public int itemBoxType;                             // 아이템 박스 타입, 0 == 랜덤박스, 1 == 체력포션, 2 == 마나포션
+
     // Start is called before the first frame update
     void Start()
     {
         canvas = GameObject.Find("Canvas");
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
         itemBoxUI = Instantiate(itemBoxObj, canvas.transform).GetComponent<RectTransform>();
+
         essenceCountText = itemBoxUI.GetChild(0).GetComponent<TextMeshProUGUI>();
         essenceCount = Random.Range(1, 5);
         essenceCountText.text = essenceCount.ToString();
+
         Vector3 itemBoxPos = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y - 0.75f, 0f));
         itemBoxUI.position = itemBoxPos;
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
     }
 
     // Update is called once per frame
@@ -29,6 +38,8 @@ public class UIItemBox : MonoBehaviour
     {
 
     }
+
+
     private void OnDestroy()
     {
         try
@@ -46,6 +57,19 @@ public class UIItemBox : MonoBehaviour
         {
             if(playerController.essenceCount >= essenceCount)
             {
+                playerController.essenceCount -= essenceCount;
+                switch (itemBoxType)
+                {
+                    case 0:
+
+                        break;
+                    case 1:
+                        playerController.healthPotionCount += 1;
+                        break;
+                    case 2:
+                        playerController.manaPotionCount += 1;
+                        break;
+                }
                 Destroy(this.gameObject);
             }
         }
