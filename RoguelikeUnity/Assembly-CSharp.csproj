@@ -64,19 +64,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enemy\DetectPlayer.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemySkeletonHead.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemySlime.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyBossController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyNormalController.cs" />
     <Compile Include="Assets\Scripts\GameSystem.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Skills\DetectObject.cs" />
     <Compile Include="Assets\Scripts\Skills\SkillFireBall.cs" />
     <Compile Include="Assets\Scripts\Skills\SkillLightning.cs" />
-    <Compile Include="Assets\Scripts\Skills\SpellController.cs" />
     <Compile Include="Assets\Scripts\Stage\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Stage\ItemBox.cs" />
+    <Compile Include="Assets\Scripts\Stage\ItemController.cs" />
     <Compile Include="Assets\Scripts\Stage\MapSpawner.cs" />
     <Compile Include="Assets\Scripts\UI\UIHealthBar.cs" />
-    <Compile Include="Assets\Scripts\UI\UIItemBox.cs" />
     <Compile Include="Assets\Scripts\UI\UIManaBar.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

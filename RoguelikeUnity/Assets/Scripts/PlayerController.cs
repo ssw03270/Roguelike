@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Camera camera;
 
-    public List<int> skillCondition = new List<int>();      // 스킬 습득 여부 확인 리스트
+    public Dictionary<int, int> skillCondition = new Dictionary<int, int>();      // 스킬 습득 여부 및 스킬 레벨 확인 딕셔너리
+    public List<int> skillConditionChecker = new List<int>();      // 스킬 습득 여부 확인 리스트
+
     private float moveSpeed = 3f;                           // 플레이어 이동 속도
     private bool isPlayerMove;                              // 플레이어가 이동 여부 확인
     private bool isPlayerAttack;                            // 플레이어 공격 여부 확인
@@ -71,6 +73,9 @@ public class PlayerController : MonoBehaviour
 
         stageNum = 0;
         isWarp = true;
+
+        skillCondition.Add(0, 1);
+        skillConditionChecker.Add(0);
     }   
 
 
@@ -152,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
         stageNumText.text = stageNum.ToString();
 
-        slotSkillImage.sprite = Resources.Load<Sprite>("Sprites/Skills/" + skillCondition[currentSkillNumber].ToString());
+        slotSkillImage.sprite = Resources.Load<Sprite>("Sprites/Skills/" + skillConditionChecker[currentSkillNumber].ToString());
 
     }
 
@@ -174,7 +179,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
-            switch (skillCondition[currentSkillNumber])
+            switch (skillConditionChecker[currentSkillNumber])
             {
                 case 0:
                     mousePos -= transform.position;
@@ -315,11 +320,6 @@ public class PlayerController : MonoBehaviour
         if (collision.tag.Equals("WarpGate"))
         {
             isWarp = true;
-        }
-        if (collision.name.Equals("Essence(Clone)"))
-        {
-            Destroy(collision.gameObject);
-            essenceCount += 1;
         }
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3145282559112211830}
   - component: {fileID: 3145282559112211831}
   m_Layer: 0
-  m_Name: ItemSpell
+  m_Name: SpellFireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5f3a5b6fc85ce4981b247dc5e452ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCode: 0
+  itemCode: 2

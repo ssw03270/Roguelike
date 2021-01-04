@@ -2466,7 +2466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa726da0fd12d149b10a0cf6bd89107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCondition: 00000000
+  skillConditionChecker: 
   lastMove: {x: 0, y: -1}
   currentHealth: 100
   currentMana: 100
@@ -2494,8 +2494,8 @@ MonoBehaviour:
   healthPotionCount: 3
   manaPotionCount: 3
   currentSkillNumber: 0
-  healthPotionPower: 20
-  manaPotionPower: 20
+  healthPotionPower: 50
+  manaPotionPower: 50
   essenceCountText: {fileID: 463272921}
   stageNum: 0
   isWarp: 1

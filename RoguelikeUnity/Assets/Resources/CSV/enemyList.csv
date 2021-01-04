@@ -1,3 +1,5 @@
 ﻿0,Slime,15,0,5,1.5
 1,SkeletonHead,10,0,10,1
+2,BossSlime,250,0,25,2
+3,BossSkeletonHead,250,0,25,1
 code,name,maxHealth,maxMana,damage,moveSpeed
