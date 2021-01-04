@@ -63,8 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemy\BossSlime\BossSlimeController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossSlime\BossSlimeSpawner.cs" />
     <Compile Include="Assets\Scripts\Enemy\DetectPlayer.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyBossController.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyNormalController.cs" />
     <Compile Include="Assets\Scripts\GameSystem.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />

@@ -114,7 +114,7 @@ public class EnemyNormalController : MonoBehaviour
         {
             for (int i = 0; i < gameSystem.skillList.Count; i++)
             {
-                if ((gameSystem.skillList[i][1] + "(Clone)").Equals(collision.name))
+                if ((gameSystem.skillList[i][1] + "(Clone)").Equals(collision.name) && gameSystem.skillList[i][2].Equals("Attack"))
                 {
                     int skillCode = int.Parse(gameSystem.skillList[i][0]);
                     currentHealth -= int.Parse(gameSystem.skillList[i][5]) * playerController.skillCondition[skillCode];
