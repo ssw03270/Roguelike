@@ -2478,9 +2478,12 @@ MonoBehaviour:
     type: 3}
   Lightning: {fileID: 1186326207500162511, guid: edaf5fc06b9bbdd4aa1f485cd4ba91e7,
     type: 3}
+  Healing: {fileID: 7405285115634491056, guid: 4ad1dcd280c1e414eb0d62f90c50ba73, type: 3}
   skillFireBall: {fileID: 741505058069657766, guid: 08af7bc7490c503409ec861457c932aa,
     type: 3}
   skillLightning: {fileID: 4206837920590251185, guid: edaf5fc06b9bbdd4aa1f485cd4ba91e7,
+    type: 3}
+  skillHealing: {fileID: 7405285115634491069, guid: 4ad1dcd280c1e414eb0d62f90c50ba73,
     type: 3}
   uIHealthBar: {fileID: 1107270411}
   uIManaBar: {fileID: 1673407284}

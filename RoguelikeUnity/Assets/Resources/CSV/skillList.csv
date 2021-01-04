@@ -1,4 +1,4 @@
 ﻿0,FireBall,Attack,5,0.1,5
 1,Lightning,Attack,20,0.5,10
-3,Healing,Support,10,0.3,25
+2,Healing,Support,10,0.3,1
 code,name,type,mana,delay,damage

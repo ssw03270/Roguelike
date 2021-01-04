@@ -27,8 +27,10 @@ public class PlayerController : MonoBehaviour
 
     public GameObject FireBall;                             // 스킬 0번 : 화염구
     public GameObject Lightning;                            // 스킬 1번 : 번개작렬
+    public GameObject Healing;                              // 스킬 1번 : 초회복
     public SkillFireBall skillFireBall;                     // 스킬 화염구 관리 클래스
     public SkillLightning skillLightning;                   // 스킬 번개작렬 관리 클래스
+    public SkillHealing skillHealing;                       // 스킬 초회복 관리 클래스
 
     public UIHealthBar uIHealthBar;                         // 체력바 클래스
     public UIManaBar uIManaBar;                             // 마나바 클래스
@@ -190,6 +192,9 @@ public class PlayerController : MonoBehaviour
                 case 1:
                     Instantiate(Lightning, mousePos, transform.rotation);
                     break;
+                case 2:
+                    Instantiate(Healing, transform.position, transform.rotation);
+                    break;
             }
         }
         int maxSkillNumber = skillCondition.Count;
@@ -320,6 +325,22 @@ public class PlayerController : MonoBehaviour
         if (collision.tag.Equals("WarpGate"))
         {
             isWarp = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Skill"))
+        {
+            for (int i = 0; i < gameSystem.skillList.Count; i++)
+            {
+                if ((gameSystem.skillList[i][1] + "(Clone)").Equals(collision.name) && gameSystem.skillList[i][2].Equals("Support"))
+                {
+                    int skillCode = int.Parse(gameSystem.skillList[i][0]);
+                    currentHealth += int.Parse(gameSystem.skillList[i][5]) * skillCondition[skillCode];
+                    break;
+                }
+            }
         }
     }
 }

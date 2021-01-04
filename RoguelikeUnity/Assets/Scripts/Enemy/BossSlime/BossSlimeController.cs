@@ -80,14 +80,9 @@ public class BossSlimeController : MonoBehaviour
     /// </summary>
     private void DropItem()
     {
-        for (int i = 0; i < itemList.Count; i++)
-        {
-            float probability = Random.Range(0f, 1f);
-            if (probability < itemProbability[i])
-            {
-                Instantiate(itemList[i], transform.position, transform.rotation).transform.parent = transform.parent.parent;
-            }
-        }
+        int itemCode = Random.Range(0, gameSystem.itemList.Count - 1);
+        GameObject randomItem = Resources.Load<GameObject>("Prefabs/Item/" + gameSystem.itemList[itemCode][1]);
+        Instantiate(randomItem, transform.position + new Vector3(0f, 1f, 0f), transform.rotation).transform.parent = transform.parent;
     }
     /// <summary>
     /// 적의 체력바와 마나바를 설정하는 함수

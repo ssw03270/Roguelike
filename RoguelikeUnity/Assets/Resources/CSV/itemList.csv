@@ -3,4 +3,5 @@
 2,SpellFireBall,spell,0
 3,SpellLightning,spell,1
 4,Essence,essence,1
+5,SpellHealing,spell,2
 code,name,type,effect

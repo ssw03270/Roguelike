@@ -7,6 +7,7 @@ public class BossSlimeSpawner : MonoBehaviour
     public GameObject bossSlime_01;
     public GameObject bossSlime_02;
     public GameObject bossSlime_03;
+    public GameObject bossSlime_04;
 
     private BossSlimeController bossSlimeController;
     private PlayerController playerController;      // 플레이어 컨트롤러 클래스
@@ -44,19 +45,25 @@ public class BossSlimeSpawner : MonoBehaviour
     {
         float bossCurrentHealth = bossSlimeController.currentHealth;
         float bossMaxHealth = bossSlimeController.maxHealth;
-        if ((transform.gameObject.name.Equals("BossSlime_01") || transform.gameObject.name.Equals("BossSlime_01(Clone)")) && bossCurrentHealth / bossMaxHealth <= 0.5)
+        if ((transform.gameObject.name.Equals("BossSlime_01") || transform.gameObject.name.Equals("BossSlime_01(Clone)")) && bossCurrentHealth / bossMaxHealth <= 0.75f)
         {
-            Instantiate(bossSlime_02, transform.position, transform.rotation).transform.parent = transform.parent;
-            Instantiate(bossSlime_02, transform.position, transform.rotation).transform.parent = transform.parent;
+            Instantiate(bossSlime_02, transform.position + new Vector3(0.5f, 0, 0), transform.rotation).transform.parent = transform.parent;
+            Instantiate(bossSlime_02, transform.position + new Vector3(-0.5f, 0, 0), transform.rotation).transform.parent = transform.parent;
             Destroy(this.gameObject);
         }
-        if ((transform.gameObject.name.Equals("BossSlime_02") || transform.gameObject.name.Equals("BossSlime_02(Clone)")) && bossCurrentHealth / bossMaxHealth <= 0.25)
+        if ((transform.gameObject.name.Equals("BossSlime_02") || transform.gameObject.name.Equals("BossSlime_02(Clone)")) && bossCurrentHealth / bossMaxHealth <= 0.5f)
         {
-            Instantiate(bossSlime_03, transform.position, transform.rotation).transform.parent = transform.parent;
-            Instantiate(bossSlime_03, transform.position, transform.rotation).transform.parent = transform.parent;
+            Instantiate(bossSlime_03, transform.position + new Vector3(0.5f, 0, 0), transform.rotation).transform.parent = transform.parent;
+            Instantiate(bossSlime_03, transform.position + new Vector3(-0.5f, 0, 0), transform.rotation).transform.parent = transform.parent;
             Destroy(this.gameObject);
         }
-        if ((transform.gameObject.name.Equals("BossSlime_03") || transform.gameObject.name.Equals("BossSlime_03(Clone)")) && bossCurrentHealth <= 0)
+        if ((transform.gameObject.name.Equals("BossSlime_03") || transform.gameObject.name.Equals("BossSlime_03(Clone)")) && bossCurrentHealth / bossMaxHealth <= 0.25f)
+        {
+            Instantiate(bossSlime_04, transform.position + new Vector3(0.5f, 0, 0), transform.rotation).transform.parent = transform.parent;
+            Instantiate(bossSlime_04, transform.position + new Vector3(-0.5f, 0, 0), transform.rotation).transform.parent = transform.parent;
+            Destroy(this.gameObject);
+        }
+        if ((transform.gameObject.name.Equals("BossSlime_04") || transform.gameObject.name.Equals("BossSlime_04(Clone)")) && bossCurrentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -89,7 +96,6 @@ public class BossSlimeSpawner : MonoBehaviour
             {
                 if ((gameSystem.skillList[i][1] + "(Clone)").Equals(collision.name) && gameSystem.skillList[i][2].Equals("Attack"))
                 {
-                    Debug.Log("a");
                     int skillCode = int.Parse(gameSystem.skillList[i][0]);
                     bossSlimeController.currentHealth -= int.Parse(gameSystem.skillList[i][5]) * playerController.skillCondition[skillCode];
                     break;
